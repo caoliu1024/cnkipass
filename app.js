@@ -294,8 +294,6 @@ var port = (process.env.VCAP_APP_PORT || 3000);
 // Start server
 app.listen(port, host);*/
 
-var host = (process.env.VCAP_APP_HOST || 'localhost');
-var port = (process.env.VCAP_APP_PORT || 3000);
 
 var http = require('http');
 var url = require("url");
@@ -304,6 +302,4 @@ http.createServer(function (req, res) {
   var arg = url.parse(req.url, true).query;
   res.write(arg.password);
   res.end();
-}).listen(port, host);
-
-console.log('App started on port ' + port);
+}).listen(process.env.PORT || 5000, null);
